@@ -1,4 +1,4 @@
-﻿@model IEnumerable<trashcollector.Models.Customer>
+﻿@model IEnumerable<trashcollector.Models.Employee>
 
 @{
     ViewBag.Title = "Index";
@@ -21,9 +21,6 @@
             @Html.DisplayNameFor(model => model.ZipCode)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PickupDay)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.UserName)
         </th>
         <th>
@@ -42,9 +39,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ZipCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PickupDay)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UserName)

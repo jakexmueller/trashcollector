@@ -31,5 +31,7 @@ namespace trashcollector.Models
         }
 
         public DbSet<Customer> Customer { get; set; }
+        public DbSet<Employee> Employee { get; set; }
+        public DbSet<AnonymousUser> AnonymousUser { get; set; } 
     }
 }

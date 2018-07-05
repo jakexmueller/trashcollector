@@ -6,7 +6,7 @@ using System.Web;
 
 namespace trashcollector.Models
 {
-    public class Customer
+    public class Employee
     {
         [Key]
         public int ID { get; set; }
@@ -18,10 +18,7 @@ namespace trashcollector.Models
         public string LastName { get; set; }
 
         public int ZipCode { get; set; }
-        public string PickupDay { get; set;}
         public string UserName { get; set; }
         public string Password { get; set; }
-
-
     }
 }

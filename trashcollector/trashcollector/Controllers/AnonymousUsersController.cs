@@ -10,107 +10,107 @@ using trashcollector.Models;
 
 namespace trashcollector.Controllers
 {
-    public class CustomersController : Controller
+    public class AnonymousUsersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Customers
+        // GET: AnonymousUsers
         public ActionResult Index()
         {
-            return View(db.Customer.ToList());
+            return View(db.AnonymousUser.ToList());
         }
 
-        // GET: Customers/Details/5
+        // GET: AnonymousUsers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customer.Find(id);
-            if (customer == null)
+            AnonymousUser anonymousUser = db.AnonymousUser.Find(id);
+            if (anonymousUser == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(anonymousUser);
         }
 
-        // GET: Customers/Create
+        // GET: AnonymousUsers/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Customers/Create
+        // POST: AnonymousUsers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,ZipCode,PickupDay,UserName,Password")] Customer customer)
+        public ActionResult Create([Bind(Include = "ID")] AnonymousUser anonymousUser)
         {
             if (ModelState.IsValid)
             {
-                db.Customer.Add(customer);
+                db.AnonymousUser.Add(anonymousUser);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(customer);
+            return View(anonymousUser);
         }
 
-        // GET: Customers/Edit/5
+        // GET: AnonymousUsers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customer.Find(id);
-            if (customer == null)
+            AnonymousUser anonymousUser = db.AnonymousUser.Find(id);
+            if (anonymousUser == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(anonymousUser);
         }
 
-        // POST: Customers/Edit/5
+        // POST: AnonymousUsers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,ZipCode,PickupDay,UserName,Password")] Customer customer)
+        public ActionResult Edit([Bind(Include = "ID")] AnonymousUser anonymousUser)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customer).State = EntityState.Modified;
+                db.Entry(anonymousUser).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(customer);
+            return View(anonymousUser);
         }
 
-        // GET: Customers/Delete/5
+        // GET: AnonymousUsers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customer.Find(id);
-            if (customer == null)
+            AnonymousUser anonymousUser = db.AnonymousUser.Find(id);
+            if (anonymousUser == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(anonymousUser);
         }
 
-        // POST: Customers/Delete/5
+        // POST: AnonymousUsers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Customer customer = db.Customer.Find(id);
-            db.Customer.Remove(customer);
+            AnonymousUser anonymousUser = db.AnonymousUser.Find(id);
+            db.AnonymousUser.Remove(anonymousUser);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

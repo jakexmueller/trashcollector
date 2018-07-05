@@ -196,7 +196,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AnonymousUsersController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -206,9 +208,19 @@
     <Compile Include="Migrations\201807051605050_CustomerMigration.Designer.cs">
       <DependentUpon>201807051605050_CustomerMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807051645250_EmployeeMigration.cs" />
+    <Compile Include="Migrations\201807051645250_EmployeeMigration.Designer.cs">
+      <DependentUpon>201807051645250_EmployeeMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807051654409_AnonymousUserMigration.cs" />
+    <Compile Include="Migrations\201807051654409_AnonymousUserMigration.Designer.cs">
+      <DependentUpon>201807051654409_AnonymousUserMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AnonymousUser.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -273,6 +285,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\AnonymousUsers\Create.cshtml" />
+    <Content Include="Views\AnonymousUsers\Delete.cshtml" />
+    <Content Include="Views\AnonymousUsers\Details.cshtml" />
+    <Content Include="Views\AnonymousUsers\Edit.cshtml" />
+    <Content Include="Views\AnonymousUsers\Index.cshtml" />
     <Content Include="Views\Customers\Create.cshtml" />
     <Content Include="Views\Customers\Delete.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
@@ -281,7 +303,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Customer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -299,6 +320,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807051605050_CustomerMigration.resx">
       <DependentUpon>201807051605050_CustomerMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807051645250_EmployeeMigration.resx">
+      <DependentUpon>201807051645250_EmployeeMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807051654409_AnonymousUserMigration.resx">
+      <DependentUpon>201807051654409_AnonymousUserMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

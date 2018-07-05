@@ -10,107 +10,107 @@ using trashcollector.Models;
 
 namespace trashcollector.Controllers
 {
-    public class CustomersController : Controller
+    public class EmployeesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Customers
+        // GET: Employees
         public ActionResult Index()
         {
-            return View(db.Customer.ToList());
+            return View(db.Employee.ToList());
         }
 
-        // GET: Customers/Details/5
+        // GET: Employees/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customer.Find(id);
-            if (customer == null)
+            Employee employee = db.Employee.Find(id);
+            if (employee == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(employee);
         }
 
-        // GET: Customers/Create
+        // GET: Employees/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Customers/Create
+        // POST: Employees/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,ZipCode,PickupDay,UserName,Password")] Customer customer)
+        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,ZipCode,UserName,Password")] Employee employee)
         {
             if (ModelState.IsValid)
             {
-                db.Customer.Add(customer);
+                db.Employee.Add(employee);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(customer);
+            return View(employee);
         }
 
-        // GET: Customers/Edit/5
+        // GET: Employees/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customer.Find(id);
-            if (customer == null)
+            Employee employee = db.Employee.Find(id);
+            if (employee == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(employee);
         }
 
-        // POST: Customers/Edit/5
+        // POST: Employees/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,ZipCode,PickupDay,UserName,Password")] Customer customer)
+        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,ZipCode,UserName,Password")] Employee employee)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customer).State = EntityState.Modified;
+                db.Entry(employee).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(customer);
+            return View(employee);
         }
 
-        // GET: Customers/Delete/5
+        // GET: Employees/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customer.Find(id);
-            if (customer == null)
+            Employee employee = db.Employee.Find(id);
+            if (employee == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(employee);
         }
 
-        // POST: Customers/Delete/5
+        // POST: Employees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Customer customer = db.Customer.Find(id);
-            db.Customer.Remove(customer);
+            Employee employee = db.Employee.Find(id);
+            db.Employee.Remove(employee);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
