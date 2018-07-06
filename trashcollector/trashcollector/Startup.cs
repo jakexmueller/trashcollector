@@ -43,6 +43,7 @@ namespace trashcollector
                 if (checkUser.Succeeded)
                 {
                     var result1 = userManager.AddToRole(user.Id, "Admin");
+                    db.SaveChanges();
 
                 }
             }
@@ -53,7 +54,6 @@ namespace trashcollector
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
                 role.Name = "Manager";
                 roleManager.Create(role);
-
             }
 
             // creating Creating Employee role    
