@@ -9,31 +9,29 @@ using trashcollector.Models;
 
 namespace trashcollector.Controllers
 {
-    [Authorize]
-    public class UsersController : Controller
-        
+    public class RoleController : Controller
     {
-        // GET: Users
+        // GET: Role
         public ActionResult Index()
         {
+            UsersController usersController = new UsersController();
+            ApplicationDbContext database = new ApplicationDbContext();
             if (User.Identity.IsAuthenticated)
             {
-                var user = User.Identity;
-                ViewBag.Name = user.Name;
-
-                ViewBag.displayMenu = "No";
-
-                if (IsAdminUser())
+                
+                if (!IsAdminUser())
                 {
-                    ViewBag.displayMenu = "Yes";
+                    return RedirectToAction("Index", "Home");
                 }
-                return View();
             }
             else
             {
-                ViewBag.Name = "Not Logged IN";
+                return RedirectToAction("Index", "Home");
             }
-            return View();
+
+            var Roles = database.Roles.ToList(); ;
+            
+            return View(Roles);
         }
         public Boolean IsAdminUser()
         {
@@ -41,7 +39,7 @@ namespace trashcollector.Controllers
             {
                 var user = User.Identity;
                 ApplicationDbContext database = new ApplicationDbContext();
-                
+
                 var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(database));
                 var s = UserManager.GetRoles(user.GetUserId());
                 if (s[0].ToString() == "Admin")
