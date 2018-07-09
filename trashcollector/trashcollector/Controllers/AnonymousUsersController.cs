@@ -52,7 +52,7 @@ namespace trashcollector.Controllers
             {
                 db.AnonymousUser.Add(anonymousUser);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
 
             return View(anonymousUser);
