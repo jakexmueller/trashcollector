@@ -218,6 +218,14 @@
     <Compile Include="Migrations\201807051654409_AnonymousUserMigration.Designer.cs">
       <DependentUpon>201807051654409_AnonymousUserMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807091816435_UserRoleDropdownSelection.cs" />
+    <Compile Include="Migrations\201807091816435_UserRoleDropdownSelection.Designer.cs">
+      <DependentUpon>201807091816435_UserRoleDropdownSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807091821127_DeletedExtraUserRole.cs" />
+    <Compile Include="Migrations\201807091821127_DeletedExtraUserRole.Designer.cs">
+      <DependentUpon>201807091821127_DeletedExtraUserRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AnonymousUser.cs" />
@@ -331,6 +339,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807051654409_AnonymousUserMigration.resx">
       <DependentUpon>201807051654409_AnonymousUserMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807091816435_UserRoleDropdownSelection.resx">
+      <DependentUpon>201807091816435_UserRoleDropdownSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807091821127_DeletedExtraUserRole.resx">
+      <DependentUpon>201807091821127_DeletedExtraUserRole.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

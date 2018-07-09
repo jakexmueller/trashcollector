@@ -142,10 +142,10 @@ namespace trashcollector.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            //ViewBag.Name = new SelectList(database.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
-            RegisterViewModel rvm = new RegisterViewModel();
-            rvm.RoleNames = new SelectList(database.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name").ToList();
-            return View(rvm);
+            ViewBag.Name = new SelectList(database.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
+            //RegisterViewModel rvm = new RegisterViewModel();
+            //rvm.RoleNames = new SelectList(database.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
+            return View();
         }
 
         //
