@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using trashcollector.Models;
+using Microsoft.AspNet.Identity;
 
 namespace trashcollector.Controllers
 {
@@ -46,11 +47,14 @@ namespace trashcollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,ZipCode,UserName,Password")] Employee employee)
+        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,UserName,Password")] Employee employee)
         {
+            RegisterViewModel model = new RegisterViewModel();
             if (ModelState.IsValid)
             {
+                employee.ID = User.Identity.GetUserId<int>();
                 db.Employee.Add(employee);
+                //db.Employee.Add(model.FirstName);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
