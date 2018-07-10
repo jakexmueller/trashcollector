@@ -47,12 +47,13 @@ namespace trashcollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,UserName,Password")] Employee employee)
+        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,ZipCode,UserName,Password")] Employee employee)
         {
             RegisterViewModel model = new RegisterViewModel();
             if (ModelState.IsValid)
             {
-                //employee.ID = User.Identity.GetUserId<int>();
+
+                employee.UserId = User.Identity.GetUserId();
                 db.Employee.Add(employee);
                 //db.Employee.Add(model.FirstName);
                 db.SaveChanges();
