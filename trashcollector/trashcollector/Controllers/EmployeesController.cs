@@ -52,7 +52,7 @@ namespace trashcollector.Controllers
             RegisterViewModel model = new RegisterViewModel();
             if (ModelState.IsValid)
             {
-                employee.ID = User.Identity.GetUserId<int>();
+                //employee.ID = User.Identity.GetUserId<int>();
                 db.Employee.Add(employee);
                 //db.Employee.Add(model.FirstName);
                 db.SaveChanges();

@@ -172,7 +172,13 @@ namespace trashcollector.Controllers
                     //Assign Role to user Here
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
                     //Ends Here
-                    return RedirectToAction("Index", "Users");
+                    if (model.UserRoles == "Employee")
+                    {
+                        return RedirectToAction("Create", "Employees");
+                    }
+                    else if (model.UserRoles == "Customer"){
+                        return RedirectToAction("Create", "Customers");
+                    }
                 }
                 ViewBag.Name = new SelectList(database.Roles.Where(u => !u.Name.Contains("admin")).ToList(), "Name", "Name");
                 AddErrors(result);
