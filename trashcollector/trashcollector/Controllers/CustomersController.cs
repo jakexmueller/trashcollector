@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -17,6 +18,14 @@ namespace trashcollector.Controllers
         // GET: Customers
         public ActionResult Index()
         {
+            var userID = User.Identity.GetUserId();
+
+            //var userZipCode = User.Identity.
+            //var userID = User.Identity.GetUserId();
+            //var model = from r in db.Customer
+            //            orderby r.ZipCode
+            //            where r.ZipCode == zipCode
+            //            select r;
 
             return View(db.Customer.ToList());
         }
