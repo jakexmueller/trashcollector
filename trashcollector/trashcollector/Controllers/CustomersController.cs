@@ -16,21 +16,23 @@ namespace trashcollector.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Customers
-        public ActionResult Index()
+        public ActionResult Index(string pickupDay)
         {
             var userID = User.Identity.GetUserId();
             var employeeLoggedIn = db.Employee.Where(i => i.UserId == userID).First();
             var matches = db.Customer.Where(n => n.ZipCode == employeeLoggedIn.ZipCode).ToList();
+            ViewBag.PickUpDay = (from r in db.Customer
+                               select r.PickupDay).Distinct();
             
 
             //var userZipCode = User.Identity.
             //var userID = User.Identity.GetUserId();
-            //var model = from r in db.Customer
-            //            orderby r.ZipCode
-            //            where r.ZipCode == zipCode
-            //            select r;
+            var model = from r in matches
+                        orderby r.LastName
+                        where r.PickupDay == pickupDay || pickupDay == null || pickupDay == ""
+                        select r;
 
-            return View(matches.ToList());
+            return View(model.ToList());
         }
 
         // GET: Customers/Details/5
@@ -51,6 +53,7 @@ namespace trashcollector.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
+            //make list of days of week
             return View();
         }
 
