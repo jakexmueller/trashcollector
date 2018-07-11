@@ -19,6 +19,9 @@ namespace trashcollector.Controllers
         public ActionResult Index()
         {
             var userID = User.Identity.GetUserId();
+            var employeeLoggedIn = db.Employee.Where(i => i.UserId == userID).First();
+            var matches = db.Customer.Where(n => n.ZipCode == employeeLoggedIn.ZipCode).ToList();
+            
 
             //var userZipCode = User.Identity.
             //var userID = User.Identity.GetUserId();
@@ -27,7 +30,7 @@ namespace trashcollector.Controllers
             //            where r.ZipCode == zipCode
             //            select r;
 
-            return View(db.Customer.ToList());
+            return View(matches.ToList());
         }
 
         // GET: Customers/Details/5
