@@ -230,6 +230,10 @@
     <Compile Include="Migrations\201807101921234_current userid merged with employee userid.Designer.cs">
       <DependentUpon>201807101921234_current userid merged with employee userid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807111954278_CustomerBalanceAdded.cs" />
+    <Compile Include="Migrations\201807111954278_CustomerBalanceAdded.Designer.cs">
+      <DependentUpon>201807111954278_CustomerBalanceAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AnonymousUser.cs" />
@@ -352,6 +356,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807101921234_current userid merged with employee userid.resx">
       <DependentUpon>201807101921234_current userid merged with employee userid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807111954278_CustomerBalanceAdded.resx">
+      <DependentUpon>201807111954278_CustomerBalanceAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

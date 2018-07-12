@@ -15,6 +15,7 @@ namespace trashcollector.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        ApplicationDbContext db = new ApplicationDbContext();
 
         public ManageController()
         {
@@ -51,7 +52,23 @@ namespace trashcollector.Controllers
         }
 
         //
-        // GET: /Manage/Index
+        
+        //GET
+        public ActionResult AddPickupDay(int balance)
+        {
+            
+            //var userID = User.Identity.GetUserId();
+            //var customerLoggedIn = db.Customer.Where(i => i.ID == ).First();
+            return View();
+        }
+        //POST
+        public ActionResult AddPickupDay()
+        {
+            return View();
+        }
+
+
+            // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
