@@ -16,23 +16,25 @@ namespace trashcollector.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Customers
-        public ActionResult Index(string pickupDay)
+        public ActionResult Index()
         {
-            var userID = User.Identity.GetUserId();
-            var employeeLoggedIn = db.Employee.Where(i => i.UserId == userID).First();
-            var matches = db.Customer.Where(n => n.ZipCode == employeeLoggedIn.ZipCode).ToList();
-            ViewBag.PickUpDay = (from r in db.Customer
-                               select r.PickupDay).Distinct();
-            
+            //var employeeLoggedIn = db.Employee.Where(i => i.UserId == userID).First();
+            //var matches = db.Customer.Where(n => n.ZipCode == employeeLoggedIn.ZipCode).ToList();
+            //ViewBag.PickUpDay = (from r in db.Customer
+            //                     select r.PickupDay).Distinct();
 
-            //var userZipCode = User.Identity.
-            //var userID = User.Identity.GetUserId();
-            var model = from r in matches
-                        orderby r.LastName
-                        where r.PickupDay == pickupDay || pickupDay == null || pickupDay == ""
-                        select r;
 
-            return View(model.ToList());
+            ////var userZipCode = User.Identity.
+            ////var userID = User.Identity.GetUserId();
+            //var model = from r in matches
+            //            orderby r.LastName
+            //            where r.PickupDay == pickupDay || pickupDay == null || pickupDay == ""
+            //            select r;
+
+            var currentUserId = User.Identity.GetUserId();
+            var customer = db.Customer.Where(x => x.ID.ToString() == currentUserId).FirstOrDefault();
+
+            return View(customer);
         }
 
         // GET: Customers/Details/5
@@ -129,6 +131,31 @@ namespace trashcollector.Controllers
             db.Customer.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        // GET: Customers/ChangePickupDay
+        public ActionResult ChangePickupDay(int? id)
+        {
+            var currentUserName = User.Identity.GetUserName();
+            var customer = db.Customer.Where(x => x.UserName == currentUserName).FirstOrDefault();
+            //Customer customer = db.Customer.Find(id);
+            return View(customer);
+        }
+
+        //POST: Customers/ChangePickupDay
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePickUpDay([Bind(Include = "ID,PickupDay")] Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                var currentUserName = User.Identity.GetUserName();
+                var currentCustomer = db.Customer.Where(x => x.UserName == currentUserName).FirstOrDefault();
+                currentCustomer.PickupDay = customer.PickupDay;
+                db.SaveChanges();
+                return RedirectToAction("Details");
+            }
+            return View(customer);
         }
 
         protected override void Dispose(bool disposing)
