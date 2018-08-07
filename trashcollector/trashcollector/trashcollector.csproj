@@ -234,6 +234,18 @@
     <Compile Include="Migrations\201807111954278_CustomerBalanceAdded.Designer.cs">
       <DependentUpon>201807111954278_CustomerBalanceAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808071844375_CustomerModelUpdated.cs" />
+    <Compile Include="Migrations\201808071844375_CustomerModelUpdated.Designer.cs">
+      <DependentUpon>201808071844375_CustomerModelUpdated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808071859599_CustomerModelNamingUpdates.cs" />
+    <Compile Include="Migrations\201808071859599_CustomerModelNamingUpdates.Designer.cs">
+      <DependentUpon>201808071859599_CustomerModelNamingUpdates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808071902458_AnotherCustomerModelUpdate.cs" />
+    <Compile Include="Migrations\201808071902458_AnotherCustomerModelUpdate.Designer.cs">
+      <DependentUpon>201808071902458_AnotherCustomerModelUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AnonymousUser.cs" />
@@ -359,6 +371,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807111954278_CustomerBalanceAdded.resx">
       <DependentUpon>201807111954278_CustomerBalanceAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808071844375_CustomerModelUpdated.resx">
+      <DependentUpon>201808071844375_CustomerModelUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808071859599_CustomerModelNamingUpdates.resx">
+      <DependentUpon>201808071859599_CustomerModelNamingUpdates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808071902458_AnotherCustomerModelUpdate.resx">
+      <DependentUpon>201808071902458_AnotherCustomerModelUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

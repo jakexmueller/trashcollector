@@ -1,4 +1,5 @@
-﻿@model IEnumerable<trashcollector.Models.Customer>
+﻿@*Seen by Employee when looking at customers in same zip code*@
+@model IEnumerable<trashcollector.Models.Customer>
 
 @{
     ViewBag.Title = "Index";
@@ -26,6 +27,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Password)
         </th>
+        <th>
+            @Html.DisplayNameFor(model=>model.PickupComplete)
+        </th>
         <th></th>
     </tr>
 
@@ -48,6 +52,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Password)
         </td>
+        <td> 
+        @Html.CheckBox("pickupConfirmed", false)
+        </td>
+       
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
             @Html.ActionLink("Details", "Details", new { id = item.ID }) |
