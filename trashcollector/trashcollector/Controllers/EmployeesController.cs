@@ -18,10 +18,10 @@ namespace trashcollector.Controllers
         // GET: Employees
         public ActionResult Index()
         {
-            //var userID = User.Identity.GetUserId();
-            //var employeeLoggedIn = db.Employee.Where(i => i.UserId == userID).First();
-            //var matches = db.Customer.Where(n => n.ZipCode == employeeLoggedIn.ZipCode).ToList();
-            return View(db.Employee.ToList());
+            var userName = User.Identity.GetUserName();
+            var currentEmployee = db.Employee.Where(i => i.UserName == userName).FirstOrDefault();
+            var customerMatches = db.Customer.Where(n => n.ZipCode == currentEmployee.ZipCode).ToList();
+            return View(customerMatches.ToList());
         }
 
         // GET: Employees/Details/5
