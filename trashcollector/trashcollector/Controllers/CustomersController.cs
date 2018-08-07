@@ -31,24 +31,17 @@ namespace trashcollector.Controllers
             //            where r.PickupDay == pickupDay || pickupDay == null || pickupDay == ""
             //            select r;
 
-            var currentUserId = User.Identity.GetUserId();
-            var customer = db.Customer.Where(x => x.ID.ToString() == currentUserId).FirstOrDefault();
+            var currentUserName = User.Identity.GetUserName();
+            var customer = db.Customer.Where(x => x.UserName == currentUserName).FirstOrDefault();
 
             return View(customer);
         }
 
         // GET: Customers/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Customer customer = db.Customer.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
+            var currentUserName = User.Identity.GetUserName();
+            var customer = db.Customer.Where(x => x.UserName == currentUserName).FirstOrDefault();
             return View(customer);
         }
 
