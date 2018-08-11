@@ -123,6 +123,21 @@ namespace trashcollector.Controllers
             return RedirectToAction("Index");
         }
 
+        //GET: Employees/BillCustomer/5
+        public ActionResult BillCustomer()
+        {
+            return View();
+        }
+        
+        //// POST: Employees/BillCustomer/5
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult BillCustomer()
+        //{
+
+        //    return RedirectToAction("Index");
+        //}
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

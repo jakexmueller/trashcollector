@@ -1,5 +1,4 @@
-﻿@*Seen by Employee when looking at customers in same zip code*@
-@model IEnumerable<trashcollector.Models.Customer>
+﻿@model IEnumerable<trashcollector.Models.Customer>
 
 @{
     ViewBag.Title = "Index";
@@ -22,20 +21,24 @@
             @Html.DisplayNameFor(model => model.ZipCode)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.PickupDay)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.UserName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Password)
         </th>
         <th>
-            @Html.DisplayNameFor(model=>model.PickupComplete)
+            @Html.DisplayNameFor(model => model.Balance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PickupComplete)
         </th>
         <th></th>
     </tr>
 
-
-@foreach (var item in Model)
-{
+@foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
@@ -47,19 +50,24 @@
             @Html.DisplayFor(modelItem => item.ZipCode)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.PickupDay)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.UserName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Password)
         </td>
-        <td> 
-        @Html.CheckBox("pickupConfirmed")
-        </td>
-       
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            @Html.DisplayFor(modelItem => item.Balance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PickupComplete)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
 }

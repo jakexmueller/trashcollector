@@ -32,9 +32,13 @@ namespace trashcollector.Controllers
             //            select r;
 
             var currentUserName = User.Identity.GetUserName();
-            var customer = db.Customer.Where(x => x.UserName == currentUserName).FirstOrDefault();
+            var currentEmployee = db.Employee.Where(i => i.UserName == currentUserName).FirstOrDefault();
+            var customerMatches = db.Customer.Where(n => n.ZipCode == currentEmployee.ZipCode).ToList();
 
-            return View(customer);
+
+            //var customer = db.Customer.Where(x => x.UserName == currentUserName).FirstOrDefault();
+
+            return View(customerMatches.ToList());
         }
 
         // GET: Customers/Details/5
