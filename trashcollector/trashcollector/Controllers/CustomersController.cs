@@ -155,6 +155,35 @@ namespace trashcollector.Controllers
             return View(customer);
         }
 
+        ////GET: Customers/ConfirmPickup
+        //public ActionResult ConfirmPickup(int? id)
+        //{
+        //    var currentUserName = User.Identity.GetUserName();
+        //    var customer = db.Customer.Where(x => x.UserName == currentUserName).FirstOrDefault();
+        //    return View(customer);
+        //}
+
+        ////POST: Customers/ConfirmPickup
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult ConfirmPickup(int? id)
+        {
+            if (ModelState.IsValid)
+            {
+                Customer customer = db.Customer.Find(id);
+
+                //var currentUserName = User.Identity.GetUserName();
+                //var currentCustomer = db.Customer.Where(x => x.UserName == currentUserName).FirstOrDefault();
+
+                customer.PickupComplete = true;
+                int chargePrice = 10;
+                customer.Balance += chargePrice;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
