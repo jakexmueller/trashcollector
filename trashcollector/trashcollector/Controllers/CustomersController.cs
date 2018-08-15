@@ -184,7 +184,19 @@ namespace trashcollector.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("GetTodaysPickups");
+        }
+
+        public ActionResult CompletePickups()
+        {
+            var customers = db.Customer.Where(x => x.PickupDay == DateTime.Today.DayOfWeek.ToString()).ToList();
+            foreach(Customer customer in customers)
+            {
+                customer.PickupComplete = false;
+                db.SaveChanges();
+            }
+            return RedirectToAction("GetTodaysPickups");
+
         }
 
         protected override void Dispose(bool disposing)

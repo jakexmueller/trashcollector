@@ -9,6 +9,9 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<p>
+    @Html.ActionLink("Completed all Pickups", "CompletePickups")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -65,9 +68,10 @@
             @Html.DisplayFor(modelItem => item.PickupComplete)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })|
+            @Html.ActionLink("Confirm Pickup", "ConfirmPickup", new { id = item.ID })
         </td>
     </tr>
 }
