@@ -18,18 +18,7 @@ namespace trashcollector.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            //var employeeLoggedIn = db.Employee.Where(i => i.UserId == userID).First();
-            //var matches = db.Customer.Where(n => n.ZipCode == employeeLoggedIn.ZipCode).ToList();
-            //ViewBag.PickUpDay = (from r in db.Customer
-            //                     select r.PickupDay).Distinct();
-
-
-            ////var userZipCode = User.Identity.
-            ////var userID = User.Identity.GetUserId();
-            //var model = from r in matches
-            //            orderby r.LastName
-            //            where r.PickupDay == pickupDay || pickupDay == null || pickupDay == ""
-            //            select r;
+           
 
             var currentUserName = User.Identity.GetUserName();
             var currentEmployee = db.Employee.Where(i => i.UserName == currentUserName).FirstOrDefault();
@@ -40,6 +29,13 @@ namespace trashcollector.Controllers
 
             return View(customerMatches.ToList());
         }
+
+        //[HttpPost]
+        //public ActionResult Index(string PickupDay)
+        //{
+        //    ViewBag.PickupDay = new SelectList(db.Customer, "PickupDay");
+        //    var customers = db.
+        //}
 
         // GET: Customers/Details/5
         public ActionResult Details()

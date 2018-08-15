@@ -8,6 +8,11 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    @Html.DropDownList("Pickupday",
+                       new SelectList(Enum.GetValues(typeof(DayOfWeek))),
+                       "Select Day of Week",
+                       new { @class = "form-control"})
+
 </p>
 <table class="table">
     <tr>
