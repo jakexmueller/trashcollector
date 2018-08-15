@@ -1,22 +1,13 @@
 ﻿@model IEnumerable<trashcollector.Models.Customer>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "GetTodaysPickups";
 }
 
-<h2>Index</h2>
+<h2>GetTodaysPickups</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
-</p>
-
-<p>
-    @using (Html.BeginForm("index", "Customers", FormMethod.Get))
-    {
-    <text>Pickup Day</text>@Html.DropDownList("pickupday", new SelectList(ViewBag.PickupDay), DateTime.Today.DayOfWeek.ToString())
-    <input type="submit" value="search"/>
-    }
-
 </p>
 <table class="table">
     <tr>
@@ -71,17 +62,14 @@
             @Html.DisplayFor(modelItem => item.Balance)
         </td>
         <td>
-            @Html.CheckBox("pickupConfirmed")
+            @Html.DisplayFor(modelItem => item.PickupComplete)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID }) |
-            @Html.ActionLink("Confirm Pickup", "ConfirmPickup", new { id=item.ID})
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
-
 }
 
 </table>
-

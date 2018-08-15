@@ -34,14 +34,17 @@ namespace trashcollector.Controllers
             return View(model.ToList());
         }
 
-        //[HttpPost]
-        //public ActionResult Index(string PickupDay)
-        //{
-        //    ViewBag.PickupDay = new SelectList(db.Customer, "PickupDay");
-        //    var customers = db.
-        //}
+        //GET Customers/GetTodaysPickups
+        public ActionResult GetTodaysPickups()
+        {
+            var currentUserName = User.Identity.GetUserName();
+            var currentEmployee = db.Employee.Where(i => i.UserName == currentUserName).FirstOrDefault();
+            var customerMatches = db.Customer.Where(n => n.ZipCode == currentEmployee.ZipCode).ToList();
+            var todaysPickups = customerMatches.Where(i => i.PickupDay == DateTime.Today.DayOfWeek.ToString()).ToList();
 
-        // GET: Customers/Details/5
+            return View(todaysPickups.ToList());
+        }
+
         public ActionResult Details()
         {
             var currentUserName = User.Identity.GetUserName();
