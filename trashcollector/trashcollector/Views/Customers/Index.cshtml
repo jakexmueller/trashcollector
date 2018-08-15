@@ -8,10 +8,14 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
-    @Html.DropDownList("Pickupday",
-                       new SelectList(Enum.GetValues(typeof(DayOfWeek))),
-                       "Select Day of Week",
-                       new { @class = "form-control"})
+</p>
+
+<p>
+    @using (Html.BeginForm("index", "Customers", FormMethod.Get))
+    {
+    <text>Pickup Day</text>@Html.DropDownList("pickupday", new SelectList(ViewBag.PickupDay))
+    <input type="submit" value="search"/>
+    }
 
 </p>
 <table class="table">

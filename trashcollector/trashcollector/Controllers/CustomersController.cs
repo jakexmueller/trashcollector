@@ -16,18 +16,22 @@ namespace trashcollector.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Customers
-        public ActionResult Index()
+        public ActionResult Index(string pickupDay)
         {
            
 
             var currentUserName = User.Identity.GetUserName();
             var currentEmployee = db.Employee.Where(i => i.UserName == currentUserName).FirstOrDefault();
             var customerMatches = db.Customer.Where(n => n.ZipCode == currentEmployee.ZipCode).ToList();
+            ViewBag.PickupDay = (from r in db.Customer
+                                 select r.PickupDay).Distinct();
 
+            var model = from r in customerMatches
+                        orderby r.LastName
+                        where r.PickupDay == pickupDay || pickupDay == null || pickupDay == ""
+                        select r;
 
-            //var customer = db.Customer.Where(x => x.UserName == currentUserName).FirstOrDefault();
-
-            return View(customerMatches.ToList());
+            return View(model.ToList());
         }
 
         //[HttpPost]
