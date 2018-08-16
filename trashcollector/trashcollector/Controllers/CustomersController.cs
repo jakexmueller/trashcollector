@@ -195,17 +195,18 @@ namespace trashcollector.Controllers
                 int chargePrice = 10;
                 customer.Balance += chargePrice;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("GetTodaysPickups");
             }
             return RedirectToAction("GetTodaysPickups");
         }
 
         public ActionResult CompletePickups()
         {
-            var customers = db.Customer.Where(x => x.PickupDay == DateTime.Today.DayOfWeek.ToString()).ToList();
+            var customers = db.Customer.Where(x => x.PickupDay == DateTime.Today.DayOfWeek.ToString() || x.ExtraPickup == DateTime.Today.DayOfWeek.ToString()).ToList();
             foreach(Customer customer in customers)
             {
                 customer.PickupComplete = false;
+                customer.ExtraPickup = null;
                 db.SaveChanges();
             }
             return RedirectToAction("GetTodaysPickups");
