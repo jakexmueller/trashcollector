@@ -246,6 +246,10 @@
     <Compile Include="Migrations\201808071902458_AnotherCustomerModelUpdate.Designer.cs">
       <DependentUpon>201808071902458_AnotherCustomerModelUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808161453492_ExtraPickup.cs" />
+    <Compile Include="Migrations\201808161453492_ExtraPickup.Designer.cs">
+      <DependentUpon>201808161453492_ExtraPickup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AnonymousUser.cs" />
@@ -335,6 +339,7 @@
     <Content Include="Views\Customers\ChangePickupDay.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\GetTodaysPickups.cshtml" />
+    <Content Include="Views\Customers\RequestExtraPickup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -382,6 +387,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808071902458_AnotherCustomerModelUpdate.resx">
       <DependentUpon>201808071902458_AnotherCustomerModelUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808161453492_ExtraPickup.resx">
+      <DependentUpon>201808161453492_ExtraPickup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

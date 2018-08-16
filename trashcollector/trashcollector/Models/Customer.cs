@@ -23,6 +23,9 @@ namespace trashcollector.Models
         [Display(Name = "Pickup Day")]
         public string PickupDay { get; set;}
 
+        [Display(Name = "Extra Pickup")]
+        public string ExtraPickup { get; set; }
+
         [Display(Name = "User Name")]
         public string UserName { get; set; }
 

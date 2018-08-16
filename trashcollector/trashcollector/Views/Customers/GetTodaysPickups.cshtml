@@ -4,11 +4,8 @@
     ViewBag.Title = "GetTodaysPickups";
 }
 
-<h2>GetTodaysPickups</h2>
+<h2>Pickups for Today</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <p>
     @Html.ActionLink("Completed all Pickups", "CompletePickups")
 </p>
@@ -27,10 +24,7 @@
             @Html.DisplayNameFor(model => model.PickupDay)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
+            @Html.DisplayNameFor(model => model.ExtraPickup)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Balance)
@@ -56,10 +50,7 @@
             @Html.DisplayFor(modelItem => item.PickupDay)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
+            @Html.DisplayFor(modelItem => item.ExtraPickup)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Balance)

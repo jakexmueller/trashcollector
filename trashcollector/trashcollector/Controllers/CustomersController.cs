@@ -40,7 +40,9 @@ namespace trashcollector.Controllers
             var currentUserName = User.Identity.GetUserName();
             var currentEmployee = db.Employee.Where(i => i.UserName == currentUserName).FirstOrDefault();
             var customerMatches = db.Customer.Where(n => n.ZipCode == currentEmployee.ZipCode).ToList();
-            var todaysPickups = customerMatches.Where(i => i.PickupDay == DateTime.Today.DayOfWeek.ToString()).ToList();
+            var todaysPickups = customerMatches.Where(i => i.PickupDay == DateTime.Today.DayOfWeek.ToString() || i.ExtraPickup == DateTime.Today.DayOfWeek.ToString()).ToList();
+            //var extraPickups = customerMatches.Where(i => i.ExtraPickup == DateTime.Today.DayOfWeek.ToString()).ToList();
+            //todaysPickups.Add(customerMatches.Where(i => i.ExtraPickup == DateTime.Today.DayOfWeek.ToString()).ToList());
 
             return View(todaysPickups.ToList());
         }
@@ -70,7 +72,7 @@ namespace trashcollector.Controllers
             {
                 db.Customer.Add(customer);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
 
             return View(customer);
@@ -158,17 +160,28 @@ namespace trashcollector.Controllers
             return View(customer);
         }
 
-        ////GET: Customers/ConfirmPickup
-        //public ActionResult ConfirmPickup(int? id)
-        //{
-        //    var currentUserName = User.Identity.GetUserName();
-        //    var customer = db.Customer.Where(x => x.UserName == currentUserName).FirstOrDefault();
-        //    return View(customer);
-        //}
+        //GET: Customers/RequestExtraPickup
+        public ActionResult RequestExtraPickup()
+        {
+            return View();
+        }
 
-        ////POST: Customers/ConfirmPickup
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
+        //POST: Customers/RequestExtraPickup
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RequestExtraPickup([Bind(Include = "ID,ExtraPickup")] Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                var currentUserName = User.Identity.GetUserName();
+                Customer currentCustomer = db.Customer.Where(i => i.UserName == currentUserName).FirstOrDefault();
+                currentCustomer.ExtraPickup = customer.ExtraPickup;
+                db.SaveChanges();
+                return RedirectToAction("Details");
+            }
+            return View("Details");
+        }
+
         public ActionResult ConfirmPickup(int? id)
         {
             if (ModelState.IsValid)

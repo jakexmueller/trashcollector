@@ -14,6 +14,10 @@ namespace trashcollector.Controllers
             {
                 return RedirectToAction("GetTodaysPickups", "Customers");
             }
+            if(User.IsInRole("Customer"))
+            {
+                return RedirectToAction("Details", "Customers");
+            }
             else
             {
                 return View();
